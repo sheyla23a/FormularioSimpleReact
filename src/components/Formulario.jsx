@@ -1,6 +1,8 @@
+import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
-import { useState } from "react";
 import { Button } from "react-bootstrap";
+import MensajeExito from "./MensajeExito";
+import MensajeError from "./MensajeError";
 
 const Formulario = () => {
   const [nombre, setNombre] = useState("");
@@ -13,20 +15,27 @@ const Formulario = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  };
 
-  if (nombre.trim() === "" || apellido.trim() === "" || dni.trim() === "" || email.trim() === "") {
-    setError(true);
-    setExito(false);
-    alert("Completar todos los datos");
-  } else {
-    setError(false);
-    setExito(true);
-    alert("Datos enviados correctamente");}
+    if ([nombre, apellido, dni, email].some((campo) => campo.trim() === "")) {
+      setError(true);
+      setExito(false);
+    } else {
+      setError(false);
+      setExito(true);
+
+      // Limpiar Formulario
+      setNombre("");
+      setApellido("");
+      setDni("");
+      setEmail("");
+    }
+  };
 
   return (
     <section>
       <Form onSubmit={handleSubmit}>
+        {error && <MensajeError>Hay campos vacíos</MensajeError>}
+        {exito && <MensajeExito>Datos enviados correctamente</MensajeExito>}
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Nombre</Form.Label>
           <Form.Control
