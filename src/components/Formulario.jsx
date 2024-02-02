@@ -23,7 +23,6 @@ const Formulario = () => {
       setError(false);
       setExito(true);
 
-      // Limpiar Formulario
       setNombre("");
       setApellido("");
       setDni("");
