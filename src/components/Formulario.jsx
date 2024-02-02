@@ -8,9 +8,21 @@ const Formulario = () => {
   const [dni, setDni] = useState("");
   const [email, setEmail] = useState("");
 
+  const [error, setError] = useState(false);
+  const [exito, setExito] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  if (nombre.trim() === "" || apellido.trim() === "" || dni.trim() === "" || email.trim() === "") {
+    setError(true);
+    setExito(false);
+    alert("Completar todos los datos");
+  } else {
+    setError(false);
+    setExito(true);
+    alert("Datos enviados correctamente");}
 
   return (
     <section>
@@ -23,7 +35,7 @@ const Formulario = () => {
             minLength={4}
             maxLength={20}
             value={nombre}
-            onChange={(e)=> setNombre(e.target.value)}
+            onChange={(e) => setNombre(e.target.value)}
           />
           <Form.Label>Apellido</Form.Label>
           <Form.Control
@@ -32,7 +44,7 @@ const Formulario = () => {
             minLength={4}
             maxLength={20}
             value={apellido}
-            onChange={(e)=> setApellido(e.target.value)}
+            onChange={(e) => setApellido(e.target.value)}
           />
           <Form.Label>DNI</Form.Label>
           <Form.Control
@@ -40,7 +52,7 @@ const Formulario = () => {
             placeholder="Ingrese su DNI"
             maxLength={8}
             value={dni}
-            onChange={(e)=> setDni(e.target.value)}
+            onChange={(e) => setDni(e.target.value)}
           />
           <Form.Label>Email</Form.Label>
           <Form.Control
@@ -49,7 +61,7 @@ const Formulario = () => {
             min={15}
             maxLength={30}
             value={email}
-            onChange={(e)=> setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Group>
         <div className="text-center">
