@@ -36,12 +36,13 @@ const Formulario = () => {
         {error && <MensajeError>Hay campos vacíos</MensajeError>}
         {exito && <MensajeExito>Datos enviados correctamente</MensajeExito>}
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label>Nombre</Form.Label>
+          <Form.Label >Nombre</Form.Label>
           <Form.Control
             type="text"
             placeholder="Ingrese su nombre"
             minLength={4}
             maxLength={20}
+            className="mb-3"
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
           />
@@ -51,6 +52,7 @@ const Formulario = () => {
             placeholder="Ingrese su apellido"
             minLength={4}
             maxLength={20}
+            className="mb-3"
             value={apellido}
             onChange={(e) => setApellido(e.target.value)}
           />
@@ -59,6 +61,7 @@ const Formulario = () => {
             type="number"
             placeholder="Ingrese su DNI"
             maxLength={8}
+            className="mb-3"
             value={dni}
             onChange={(e) => setDni(e.target.value)}
           />
@@ -67,6 +70,7 @@ const Formulario = () => {
             type="email"
             placeholder="correo@correo.com"
             min={15}
+            className="mb-3"
             maxLength={30}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
